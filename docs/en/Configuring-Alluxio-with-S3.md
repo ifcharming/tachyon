@@ -82,13 +82,8 @@ These configuration parameters may also need to be set for the Alluxio client if
 a separate JVM from the Alluxio Master and Workers. See
 [Configuring Distributed Applications](#configuring-distributed-applications)
 
-## Enabling S3 server side encryption
-To enable S3 [server side encryption](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html),
-modify the `ALLUXIO_JAVA_OPTS` section of `conf/alluxio-env.sh` to include:
-
-{% include Configuring-Alluxio-with-S3/server-side-encryption.md %}
-
 # Configuring Application Dependency
+=======
 
 When building your application to use Alluxio, your application will have to include the
 `alluxio-core-client` module. If you are using [maven](https://maven.apache.org/), you can add the
