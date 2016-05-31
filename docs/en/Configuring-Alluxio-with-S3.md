@@ -77,7 +77,6 @@ a separate JVM from the Alluxio Master and Workers. See
 [Configuring Distributed Applications](#configuring-distributed-applications)
 
 # Configuring Application Dependency
-=======
 
 When building your application to use Alluxio, your application will have to include the
 `alluxio-core-client` module. If you are using [maven](https://maven.apache.org/), you can add the
