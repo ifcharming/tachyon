@@ -831,8 +831,11 @@ public final class InodeTree implements JournalCheckpointStreamable {
 
       if (directory.getName().equals(ROOT_INODE_NAME)) {
         // This is the root inode. Clear all the state, and set the root.
-        if (SecurityUtils.isSecurityEnabled() && mRoot != null && !mRoot.getOwner()
-            .equals(directory.getOwner())) {
+        // For backwards-compatibility:
+        // Empty owner in journal entry indicates that previous journal has no security. In this
+        // case, the journal is allowed to be applied to the new inode with security turned on.
+        if (SecurityUtils.isSecurityEnabled() && mRoot != null && !directory.getOwner().isEmpty()
+            && !mRoot.getOwner().equals(directory.getOwner())) {
           // user is not the owner of journal root entry
           throw new AccessControlException(
               ExceptionMessage.PERMISSION_DENIED.getMessage("Unauthorized user on root"));
